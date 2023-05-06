@@ -53,7 +53,7 @@ $(OPENGAMEPAD_UI_BASE):
 	git clone $(OPENGAMEPAD_UI_REPO) $@
 
 $(PLUGINS_DIR)/$(PLUGIN_ID): $(OPENGAMEPAD_UI_BASE)
-	if ! -f $(PLUGINS_DIR)/$(PLUGIN_ID); then ln -s $(PWD) $(PLUGINS_DIR)/$(PLUGIN_ID); fi
+	if ! [ -L $(PLUGINS_DIR)/$(PLUGIN_ID) ]; then ln -s $(PWD) $(PLUGINS_DIR)/$(PLUGIN_ID); fi
 
 .PHONY: export_preset
 export_preset: $(OPENGAMEPAD_UI_BASE) ## Configure plugin export preset
