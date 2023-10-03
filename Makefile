@@ -1,5 +1,5 @@
-PLUGIN_ID ?= $(shell grep 'plugin\.id' plugin.json | awk '{print $$2}' | grep -o '"[^"]\+"' | sed 's/"//g')
-PLUGIN_NAME ?= $(shell grep 'plugin\.name' plugin.json | awk '{print $$2}' | grep -o '"[^"]\+"' | sed 's/"//g')
+PLUGIN_ID ?= $(shell grep 'plugin\.id' plugin.json | grep -o ':.*' | grep -o '"[^"]\+"' | sed 's/"//g')
+PLUGIN_NAME ?= $(shell grep 'plugin\.name' plugin.json | grep -o ':.*' | grep -o '"[^"]\+"' | sed 's/"//g')
 
 GODOT ?= /usr/bin/godot
 OPENGAMEPAD_UI_REPO ?= https://github.com/ShadowBlip/OpenGamepadUI.git
@@ -45,6 +45,7 @@ build: $(PLUGINS_DIR)/$(PLUGIN_ID) export_preset ## Build the plugin
 
 .PHONY: install
 install: dist ## Installs the plugin
+	mkdir -p "$(INSTALL_DIR)"
 	cp -r dist/* "$(INSTALL_DIR)"
 	rm -rf $(INSTALL_DIR)/$(PLUGIN_ID)
 	@echo "Installed plugin to $(INSTALL_DIR)"
