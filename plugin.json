@@ -1,6 +1,6 @@
 {
-  "plugin.id": "template",
-  "plugin.name": "Template Plugin",
+  "plugin.id": "legendary",
+  "plugin.name": "Legendary Plugin",
   "plugin.version": "1.0.0",
   "plugin.min-api-version": "1.0.0",
   "plugin.link": "",
@@ -8,7 +8,7 @@
   "plugin.description": "",
   "store.tags": [],
   "store.images": [],
-  "author.name": "First Last",
-  "author.email": "person@example.com",
+  "author.name": "Gatien Leclercq",
+  "author.email": "gatien.leclercq.20@gmail.com",
   "entrypoint": "plugin.gd"
 }
