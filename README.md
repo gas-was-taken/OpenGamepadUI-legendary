@@ -3,11 +3,11 @@
 > [!WARNING]  
 > This plugin is still being worked on. Use it at your own risk.
 
-This repository contains a plugin for [OpenGamepadUI](https://github.com/ShadowBlip/OpenGamepadUI) that adds support for Epic Games using [legendary](https://github.com/derrod/legendary).  
+This repository contains a plugin for [OpenGamepadUI](https://github.com/ShadowBlip/OpenGamepadUI) that adds support for Epic Games using [legendary](https://github.com/derrod/legendary) and [umu-launcher](https://github.com/Open-Wine-Components/umu-launcher).  
 
 ## Requirements
 
-To make the plugin, you will need `legendary` installed and the dependencies for OpenGamepadUI listed [here](https://opengamepadui.readthedocs.io/en/latest/contributing/development/building_from_source.html#build-requirements).  
+To make the plugin, you will need to have `legendary` and `umu-launcher` installed. The dependencies for OpenGamepadUI listed [here](https://opengamepadui.readthedocs.io/en/latest/contributing/development/building_from_source.html#build-requirements) are also required.
 
 ## Usage
 
