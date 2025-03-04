@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://jstv4clgyabg"]
+
+[ext_resource type="Script" path="res://plugins/legendary/core/library_legendary.gd" id="1_ueomy"]
+
+[node name="Library" type="Node"]
+script = ExtResource("1_ueomy")
+library_id = "legendary"

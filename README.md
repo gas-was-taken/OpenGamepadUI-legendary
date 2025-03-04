@@ -1,64 +1,32 @@
-# OpenGamepadUI Plugin Template
+# OpenGamepadUI Legendary Plugin
 
-This repository contains a reference template for creating a plugin for
-[OpenGamepadUI](https://github.com/ShadowBlip/OpenGamepadUI).
+> [!WARNING]  
+> This plugin is still being worked on. Use it at your own risk.
+
+This repository contains a plugin for [OpenGamepadUI](https://github.com/ShadowBlip/OpenGamepadUI) that adds support for Epic Games using [legendary](https://github.com/derrod/legendary).  
 
 ## Requirements
 
-You will need to install the dependencies for OpenGamepadUI listed
-[here](https://github.com/ShadowBlip/OpenGamepadUI#requirements).
+To make the plugin, you will need `legendary` installed and the dependencies for OpenGamepadUI listed [here](https://github.com/ShadowBlip/OpenGamepadUI#requirements).  
 
 ## Usage
 
-This repository contains the basic files you need to write your own plugin.
-It includes a [Makefile](Makefile) which you can use to build and package your
-plugin. For help using the Makefile, run:
+As of now, a lot of assumptions are made by the plugin and you have to manage yourself the authentification and the installation of games directly using `legendary`.  
 
-```bash
-make help
-```
+In order to make and try this plugin :  
 
-Use the following steps to get started:
+1. Clone this repository
 
-1. Fork this repository and clone your repository locally
-
-2. Clone the [OpenGamepadUI](https://github.com/ShadowBlip/OpenGamepadUI) repository next to your plugin folder. It should look something like this:
+2. Clone the [OpenGamepadUI](https://github.com/ShadowBlip/OpenGamepadUI) repository next to the legendary plugin folder. It should look something like this:
 
 ```bash
 $ ls
 OpenGamepadUI
-OpenGamepadUI-plugin-template
+OpenGamepadUI-legendary
 ```
 
-3. Edit `plugin.json` in your plugin repository and fill our your plugin details
+4. Run `make build` from the legendary plugin directory to symlink the plugin inside the OpenGamepadUI project directory
 
-4. Run `make build` from your plugin repository to symlink your plugin inside the OpenGamepadUI project directory
+5. Run `make build` inside the OpenGamepadUI project directory to build the project
 
-5. Open the OpenGamepadUI project in the Godot editor
-
-Once you have completed these steps, you can use the Godot editor to write your
-plugin.
-
-You can build and install this plugin with:
-
-```bash
-make install
-```
-
-For more in-depth documentation on how to write plugins, refer to the
-[Plugin Development Guide](https://github.com/ShadowBlip/OpenGamepadUI/blob/main/docs/PLUGINS.md)
-
-## Distribution
-
-You can distribute your plugin by building a plugin package with:
-
-```bash
-make dist
-```
-
-This will create a zip file under the `dist` directory.
-
-To have your plugin be considered for inclusion in the OpenGamepadUI plugin store,
-create a pull request to the [OpenGamepadUI-plugins](https://github.com/ShadowBlip/OpenGamepadUI-plugins)
-repository with an entry for your plugin to have your plugin listed in the
-plugin store.
+6. Run `make install` inside the legendary plugin directory to install the plugin
