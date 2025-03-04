@@ -7,7 +7,7 @@ This repository contains a plugin for [OpenGamepadUI](https://github.com/ShadowB
 
 ## Requirements
 
-To make the plugin, you will need `legendary` installed and the dependencies for OpenGamepadUI listed [here](https://github.com/ShadowBlip/OpenGamepadUI#requirements).  
+To make the plugin, you will need `legendary` installed and the dependencies for OpenGamepadUI listed [here](https://opengamepadui.readthedocs.io/en/latest/contributing/development/building_from_source.html#build-requirements).  
 
 ## Usage
 
