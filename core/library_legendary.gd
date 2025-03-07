@@ -34,17 +34,18 @@ func get_umu_id(codename: String) -> String:
 
 func get_library_launch_items() -> Array[LibraryLaunchItem]:
 	await init_umu_api()
+	logger.info("UMU DB fetched")
 
 	var items := [] as Array[LibraryLaunchItem]
-	var output_legendary_raw = []
 
-	var success = OS.execute("legendary", ["list-installed", "--json"], output_legendary_raw)
+	var cmd_legendary := Command.create("legendary", ["list-installed", "--json"])
+	if cmd_legendary.execute() != OK:
+		logger.warn("Failed to execute command")
+	var code := await cmd_legendary.finished as int
+	if code != OK:
+		logger.warn("Command failed with output: " + cmd_legendary.stdout + " " + cmd_legendary.stderr)	
 
-	if success != OK:
-		logger.error("Error executing legendary command")
-		return items
-
-	var parsed_legendary_list_installed = JSON.parse_string(output_legendary_raw[0])
+	var parsed_legendary_list_installed = JSON.parse_string(cmd_legendary.stdout)
 
 	if typeof(parsed_legendary_list_installed) != TYPE_ARRAY:
 		logger.error("Error parsing JSON response: not an Array")
