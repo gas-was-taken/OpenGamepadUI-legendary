@@ -7,22 +7,34 @@ func _ready() -> void:
 	logger = Log.get_logger("Legendary", Log.LEVEL.INFO)
 	logger.info("Legendary Library loaded")
 
-func init_umu_api() -> Array:
-	var http_request = HTTPRequest.new()
-	add_child(http_request)
+func init_umu_api() -> Variant:
+	var cache_folder: String = "umu"
+	var cache_key: String = "egs-db"
+	var umudb_json: Variant = Cache.get_json(cache_folder, cache_key)
+	if umudb_json == null:
+		logger.info("Caching UMU DB json")
+		
+		var http_request = HTTPRequest.new()
+		add_child(http_request)
 
-	var request_completed = http_request.request_completed
-	var error = http_request.request("https://umu.openwinecomponents.org/umu_api.php?store=egs")
+		var request_completed = http_request.request_completed
+		var error = http_request.request("https://umu.openwinecomponents.org/umu_api.php?store=egs")
 
-	if error != OK:
-		logger.error("Failed to make HTTP request to umu api")
-		return []
+		if error != OK:
+			logger.error("Failed to make HTTP request to UMU API")
+			return []
 
-	var result = await request_completed
-	var response_code = result[1]
-	var body = result[3]
-	umudb_json = JSON.parse_string(body.get_string_from_utf8())
-	http_request.queue_free()
+		var result = await request_completed
+		var response_code = result[1]
+		var body = result[3]
+		umudb_json = JSON.parse_string(body.get_string_from_utf8())
+		http_request.queue_free()
+		if umudb_json is not Array:
+			logger.error("Failed to parse the answer from UMU API")
+			return []
+		Cache.save_json(cache_folder, cache_key, umudb_json)
+	else:
+		logger.info("Using cached UMU DB json")
 	return umudb_json
 
 func get_umu_id(codename: String) -> String:
@@ -34,7 +46,6 @@ func get_umu_id(codename: String) -> String:
 
 func get_library_launch_items() -> Array[LibraryLaunchItem]:
 	await init_umu_api()
-	logger.info("UMU DB fetched")
 
 	var items := [] as Array[LibraryLaunchItem]
 
